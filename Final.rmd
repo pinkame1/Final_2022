@@ -79,9 +79,18 @@ print(effectivenessM)
 ```
 
 
+```{r}
+low=(Mfish$conf.int[1]/(Mfish$conf.int[1] +1))*100
+hi=(Mfish$conf.int[2]/(Mfish$conf.int[2] +1))*100
+options(digits=2)
+```
+
+
+
+
 ## Effectiveness Confidence Interval `r low`  to `r hi`
 
-
+Up top is the effectiveness for the covid-19 vaccine for males. If the effectiveness is above 50 that means that the vaccine is effective. From the interval we can see that the vaccine was effective among men. 
 
 
 
