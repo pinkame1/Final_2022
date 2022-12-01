@@ -66,9 +66,7 @@ Mfish
 ```
 
 
-The pvalue is shown to be 2.364e-12(0.00000000002364) is a small number which means these results are liable and not likely to occur by chance. 
-
-...
+The pvalue is shown to be 2.364e-12(0.00000000002364) is a small number which means these results are liable and not likely to occur by chance. We see that sex does play a role in the deaths of individuals.
 
 
 
@@ -88,7 +86,9 @@ options(digits=2)
 
 
 
-## Effectiveness Confidence Interval `r low`  to `r hi`
+## Effectiveness Confidence Interval 
+
+`r low`  to `r hi`
 
 Up top is the effectiveness for the covid-19 vaccine for males. If the effectiveness is above 50 that means that the vaccine is effective. From the interval we can see that the vaccine was effective among men. 
 
@@ -96,12 +96,168 @@ Up top is the effectiveness for the covid-19 vaccine for males. If the effective
 
 ## Females
 
+### Barplot
+
+```{r}
+basic<- F %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(basic,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(basic,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+This barplot represents the population of females and the relationship of getting covid after by either taking the vaccine or the placebo...
+
+### Numerical results
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=F)
+rowPerc(table1)
+colPerc(table1)
+```
+...
+
+### Inferential 
+
+
+
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+Ffish <- fisher.test(table1)
+Ffish
+```
+
+```{r}
+effect <- Ffish$p.value/(Ffish$p.value +1)
+effectivenessF = Ffish$estimate/(Ffish$estimate +1)*100
+print(effectivenessF)
+```
+
+```{r}
+low=(Ffish$conf.int[1]/(Ffish$conf.int[1] +1))*100
+hi=(Ffish$conf.int[2]/(Ffish$conf.int[2] +1))*100
+options(digits=2)
+```
+
+## Effectiveness Confidence Interval 
+
+`r low`  to `r hi`
+
 
 ## LGBTQ
 
+### Barplot
+
+```{r}
+basic <- gay %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+basicC <- ggplot(basic,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+basicCC <- ggplot(basic,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+### Numerical results
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=gay)
+rowPerc(table1)
+colPerc(table1)
+```
+
+### Inferential 
+
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+gayfish <- fisher.test(table1)
+gayfish
+```
+
+
+```{r}
+effect <- gayfish$p.value/(gayfish$p.value +1)
+effectivenessgay = gayfish$estimate/(gayfish$estimate +1)*100
+print(effectivenessgay)
+```
+
+```{r}
+low=(gayfish$conf.int[1]/(gayfish$conf.int[1] +1))*100
+hi=(gayfish$conf.int[2]/(gayfish$conf.int[2] +1))*100
+options(digits=2)
+```
+
+
+## Effectiveness Confidence Interval
+
+`r low`  to `r hi`
 
 
 ## Druggies
 
+### Barplot
+
+
+```{r}
+basic <-  Druguser %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+basicC <- ggplot(basic,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+basicCC <- ggplot(basic,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+### Numerical results
+
+```{r}
+table1 <- xtabs(~infected + treatment, data= Druguser)
+rowPerc(table1)
+colPerc(table1)
+```
+### Inferential 
+
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+drugfish <- fisher.test(table1)
+drugfish
+```
+
+
+```{r}
+effect <- drugfish$p.value/(drugfish$p.value +1)
+effectivenessdrug = drugfish$estimate/(drugfish$estimate +1)*100
+print(effectivenessdrug)
+```
+
+```{r}
+low=(drugfish$conf.int[1]/(drugfish$conf.int[1] +1))*100
+hi=(drugfish$conf.int[2]/(drugfish$conf.int[2] +1))*100
+options(digits=2)
+```
+
+
+## Effectiveness Confidence Interval 
+
+`r low`  to `r hi`
+
+
 
 # Overall Results and Conclusions
+
+
+
+
+
+
+
+
+
