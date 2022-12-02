@@ -201,7 +201,9 @@ gayfish <- fisher.test(table1)
 gayfish
 ```
 
-
+ p-value is 0 which is low. 
+ 
+ 
 ```{r}
 effect <- gayfish$p.value/(gayfish$p.value +1)
 effectivenessgay = gayfish$estimate/(gayfish$estimate +1)*100
@@ -217,15 +219,17 @@ hi=(gayfish$conf.int[2]/(gayfish$conf.int[2] +1))*100
 options(digits=2)
 ```
 
-The effectiveness confidence interval for the people who identified as gay is 6.201 to 25.6132.
+
 
 ## Effectiveness Confidence Interval
 
 `r low`  to `r hi`
 
-The effectiveness for the vaccine against covid for those who identified as gay is shown above.  If the effectiveness is 50% that means that the vaccine is effective.
+The effectiveness confidence interval for the people who identified as gay is 6.201 to 25.6132 
+
 
 ## Druggies
+
 
 ### Barplot
 
@@ -252,10 +256,7 @@ colPerc(table1)
 ```
 
 
-The numerical results above show the  percentages of drugu sers that got covid after taking the placebo and the vaccine. The percentage of drug users that took the placebo and got covid was 17% while 83% of drugusers got covid after taking the vaccine. 
-
-
-
+The numerical results above show the  percentages of drug users that got covid after taking the placebo and the vaccine. The percentage of drug users that took the placebo and got covid was 17% while 83% of drugusers got covid after taking the vaccine. The drug users that took the vaccine were more likely to get than those taking the placebo.
 
 
 ### Inferential 
@@ -269,11 +270,17 @@ drugfish
 ```
 
 
+As shown above the p-value is 0 which is low. The Fishers's Exact Test shows that the odds ratio is 0.21.drug users who got the vaccine were about 4-5 times more likely to get covid than those drug users who tookt he placebo. 
+
+
 ```{r}
 effect <- drugfish$p.value/(drugfish$p.value +1)
 effectivenessdrug = drugfish$estimate/(drugfish$estimate +1)*100
 print(effectivenessdrug)
 ```
+
+the odds ratio is 17 very low meaning it did not work well. 
+
 
 ```{r}
 low=(drugfish$conf.int[1]/(drugfish$conf.int[1] +1))*100
@@ -286,11 +293,11 @@ options(digits=2)
 
 `r low`  to `r hi`
 
-
+the effectiveness for the covid for drugusers is 8.571 to 29.4733. Taking the vaccine increases the contraction rate of covid among drugusers. Those didnt take the vaccine were better off without it. 
 
 # Overall Results and Conclusions
 
-
+The covid vaccine was effective in protecting men against it. The covid vaccince  effectiveness was `r effectivenessM`
 
 
 
