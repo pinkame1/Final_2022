@@ -39,7 +39,7 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
 
-This bar graph shows the population of men who got covid by either a placebo or vaccine. The placebo had more sick men than the actual vaccine. Over 60% of men contracted covid after the placebo and the low of about 30% of men who got sick after the vaccine. Men were twice as likely to get sick/covid from the placebo than the vaccine.In the second graph,the x-axis represents  if a person got covid or not. The y-axis represents the percentage of people that got covid after taking the the placebo or taking the vaccine.
+This bar graph shows the population of men who got covid by either a placebo or vaccine. The placebo had more sick men than the actual vaccine. Over 60% of men contracted covid after the placebo and the low of about 30% of men who got sick after the vaccine. Men were twice as likely to get sick/covid from the placebo than the vaccine.In the graph,the x-axis represents  if a person got covid or not. The y-axis represents the percentage of people that got covid after taking the the placebo or taking the vaccine.
 
 
 ### Numerical results
@@ -115,7 +115,8 @@ basicCC <- ggplot(basic,aes(x=infected,y=prcnt*100,fill=treatment))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
-This barplot represents the population of females and the relationship of getting covid after by either taking the vaccine or the placebo. It shows that more women who were only given the vaccine contracted covid than those who took the placebo. 58% of women got covid with the vaccine while only approximately 42% got covid from the placebo. 
+This barplot represents the population of females and the relationship of getting covid after by either taking the vaccine or the placebo. It shows that more women who were only given the vaccine contracted covid than those who took the placebo. 58% of women got covid with the vaccine while only approximately 42% got covid from the placebo. In the bar plot, the x-axis represents whether a person got covid-19 or not. The y-axis represents the percentage of people that got covid after taking the  placebo or  the vaccine. 
+
 
 ### Numerical results
 
@@ -216,6 +217,7 @@ hi=(gayfish$conf.int[2]/(gayfish$conf.int[2] +1))*100
 options(digits=2)
 ```
 
+The effectiveness confidence interval for the people who identified as gay is 6.201 to 25.6132.
 
 ## Effectiveness Confidence Interval
 
@@ -235,6 +237,12 @@ basicC + geom_bar(stat="identity",position="dodge")
 basicCC <- ggplot(basic,aes(x=infected,y=prcnt*100,fill=treatment)) 
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
+
+
+This barplot shows the population of people who are  drug users and having covid while taking either the vaccine or the placebo. Around 18% of drug users when taking the placebo, got covuid. The other 82% of the drug users got covid after having the vaccine.The drug users that took the vaccine were way more likely to get covid than the placebo.In the bar plot, the x-axis represents whether a person got covid-19 or not. The y-axis represents the percentage of people that got covid after taking the  placebo or  the vaccine. 
+
+
+
 ### Numerical results
 
 ```{r}
@@ -242,6 +250,14 @@ table1 <- xtabs(~infected + treatment, data= Druguser)
 rowPerc(table1)
 colPerc(table1)
 ```
+
+
+The numerical results above show the  percentages of drugu sers that got covid after taking the placebo and the vaccine. The percentage of drug users that took the placebo and got covid was 17% while 83% of drugusers got covid after taking the vaccine. 
+
+
+
+
+
 ### Inferential 
 
 
