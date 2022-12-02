@@ -297,11 +297,12 @@ the effectiveness for the covid for drugusers is 8.571 to 29.4733. Taking the va
 
 # Overall Results and Conclusions
 
-The covid vaccine was effective in protecting men against it. The covid vaccince  effectiveness was `r effectivenessM`
+The covid vaccine was effective in protecting men against it. The covid vaccine  effectiveness was `r effectivenessM`
+The coivd vaccine was not as effective protecting women as it was protecting men against it. The covid vaccine effectiveness was `r effectivenessF` 
 
+The covid vaccine was the least effective in protecting those who were gay. The covid effectiveness was `r effectivenessgay` The people who are gay and took the vaccine were more likely to get covid-19 than those taking the placebo.
 
+The covid vaccine was not effective but not as terrible as it was for the gay community. The drugusers that took the vaccine are more likely to get covid than those taking the placebo.The covid vaccine effectiveness was `r effectivenessdrug` .
 
-
-
-
+males effectiveness with the vaccine was the highest among all the groups with the women, then the drugusers, and lastly the gays. The vaccine is proven to be effective with the sexes (female and male). The effectiveness drains when the categorizes of gay and drug user plays into it. 
 
