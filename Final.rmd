@@ -39,7 +39,7 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
 
-This bar graph shows the population of men who got covid by either a placebo or vaccine. The placebo had more sick men than the actual vaccine. Over 60% of men contracted covid after the placebo and the low of about 30% of men who got sick after the vaccine. Men were twice as likely to get sick/covid from the placebo than the vaccine.In the second graph,the x-axis represents  if a person got covid-19 or not. The y-axis represents the percentage of people that got covid-19 after taking the the placebo or taking the vaccine.
+This bar graph shows the population of men who got covid by either a placebo or vaccine. The placebo had more sick men than the actual vaccine. Over 60% of men contracted covid after the placebo and the low of about 30% of men who got sick after the vaccine. Men were twice as likely to get sick/covid from the placebo than the vaccine.In the second graph,the x-axis represents  if a person got covid or not. The y-axis represents the percentage of people that got covid after taking the the placebo or taking the vaccine.
 
 
 ### Numerical results
@@ -52,7 +52,7 @@ colPerc(table1)
 ```
 
 
-The table shows the percentages of men that got covid-19 after taking the placebo and taking the vaccine. 68% of men who recieved the placebo got sick while the vaccine had a 32% rate of men that got sick after. 
+The table shows the percentages of men that got covid after taking the placebo and taking the vaccine. 68% of men who received the placebo got sick while the vaccine had a 32% rate of men that got sick after. 
 
 
 ### Inferential 
@@ -76,6 +76,8 @@ effectivenessM = Mfish$estimate/(Mfish$estimate +1)*100
 print(effectivenessM)
 ```
 
+The odds ratio is how effective the vaccine is. The odds ratio seen above is 69.
+
 
 ```{r}
 low=(Mfish$conf.int[1]/(Mfish$conf.int[1] +1))*100
@@ -90,7 +92,7 @@ options(digits=2)
 
 `r low`  to `r hi`
 
-Up top is the effectiveness for the covid-19 vaccine for males. If the effectiveness is above 50 that means that the vaccine is effective. From the interval we can see that the vaccine was effective among men. 
+Up is the effectiveness for the covid vaccine for males. If the effectiveness is above 50 that means that the vaccine is effective. From the interval we can see that the vaccine was effective among men. The effectiveness confidence interval for men is 63.401 to 73.347. This proves the vaccine was effective among men. 
 
 
 
@@ -113,7 +115,7 @@ basicCC <- ggplot(basic,aes(x=infected,y=prcnt*100,fill=treatment))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
-This barplot represents the population of females and the relationship of getting covid after by either taking the vaccine or the placebo...
+This barplot represents the population of females and the relationship of getting covid after by either taking the vaccine or the placebo. It shows that more women who were only given the vaccine contracted covid than those who took the placebo. 58% of women got covid with the vaccine while only approximately 42% got covid from the placebo. 
 
 ### Numerical results
 
@@ -122,25 +124,28 @@ table1 <- xtabs(~infected + treatment, data=F)
 rowPerc(table1)
 colPerc(table1)
 ```
-...
+
+These numerical results show the  percentages of women that got covid-19 after having the placebo and the vaccine.The women who took the vaccine and got covid was 57% and 43% of those took the placebo. This proves that the placebo is more effective than the vaccine.The women that took the vaccine were more likely to get covid than those who took the placebo. The odds of getting covid with the vaccine was almost twice as much of women getting sick than with the placebo. 
+
 
 ### Inferential 
-
-
-
-
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
 Ffish <- fisher.test(table1)
 Ffish
 ```
+The p-value displayed above is small 0.005 
+
+
+
 
 ```{r}
 effect <- Ffish$p.value/(Ffish$p.value +1)
 effectivenessF = Ffish$estimate/(Ffish$estimate +1)*100
 print(effectivenessF)
 ```
+The odds ratio is how effective the vaccine is 43.
 
 ```{r}
 low=(Ffish$conf.int[1]/(Ffish$conf.int[1] +1))*100
@@ -151,6 +156,9 @@ options(digits=2)
 ## Effectiveness Confidence Interval 
 
 `r low`  to `r hi`
+
+
+The effectiveness for covid for females. If the effectiveness is above 50% that means that the vaccine is effective. Based on the interval, we see that the vaccine is not effective in protecting women from covid.The effectiveness confidence interval for women is 37.34 to 47.86.
 
 
 ## LGBTQ
@@ -165,6 +173,10 @@ basicCC <- ggplot(basic,aes(x=infected,y=prcnt*100,fill=treatment))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
+
+This barplot shows the population of gay people and getting covid by taking either the vaccine or the placebo. As shown in the barplot, it shows that approximately 15% of gay people got covid after taking the placebo and 85% of gays got covid after taking the vaccine. 
+
+
 ### Numerical results
 
 ```{r}
@@ -172,6 +184,11 @@ table1 <- xtabs(~infected + treatment, data=gay)
 rowPerc(table1)
 colPerc(table1)
 ```
+
+
+This table above shows the infected gay people who took the placebo was a low 13% and those who took the vaccine was at a high of 87%. 
+
+
 
 ### Inferential 
 
@@ -190,6 +207,9 @@ effectivenessgay = gayfish$estimate/(gayfish$estimate +1)*100
 print(effectivenessgay)
 ```
 
+The odds ratio is how effective the vaccine is 14. Very low indicating it does not work well. 
+
+
 ```{r}
 low=(gayfish$conf.int[1]/(gayfish$conf.int[1] +1))*100
 hi=(gayfish$conf.int[2]/(gayfish$conf.int[2] +1))*100
@@ -201,6 +221,7 @@ options(digits=2)
 
 `r low`  to `r hi`
 
+The effectiveness for the vaccine against covid for those who identified as gay is shown above.  If the effectiveness is 50% that means that the vaccine is effective.
 
 ## Druggies
 
